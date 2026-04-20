@@ -5,19 +5,29 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     flake-utils.url = "github:numtide/flake-utils";
   };
+  
+  outputs = inputs@{ self, flake-parts, ... }:
+    flake-parts.lib.mkFlake { inherit inputs; } {
+      systems = [
+        "x86_64-linux"
+        "aarch64-linux"
+        "x86_64-darwin"
+        "aarch64-darwin"
+      ];
 
-  outputs = { self, nixpkgs, flake-utils }:
-    flake-utils.lib.eachDefaultSystem (system:
-      let
-        pkgs = nixpkgs.legacyPackages.${system};
-      in
-      {
-        packages = with pkgs; [
+      perSystem = { pkgs, lib, ... }: {
+        devShells.default = lib.mkForce (pkgs.mkShell {
+          packages = with pkgs; [
             librsvg
             imagemagick
             pdf2svg
             inkscape
             typst
           ];
-      });
+
+          shellHook = ''
+          '';
+        });
+      };
+    };
 }
