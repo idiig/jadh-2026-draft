@@ -53,7 +53,7 @@
 		   (let ((value (org-element-property :value example-block)))
 		     (format "#figure([\n```xml\n%s```\n])\n" value)))
 		 (push '(example-block . my/ox-typst-example-block)
-		       (org-export-backend-translate-alist
+		       (org-export-backend-transcoders
 			(org-export-get-backend 'typst))))
 
 	       (defun my-typst-image-width (text backend info)
