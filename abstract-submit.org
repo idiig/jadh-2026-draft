@@ -1,6 +1,6 @@
 #+bibliography: references.bib
 #+cite_export: csl ieee.csl
-#+option: toc:nil
+#+options: toc:nil
 #+title: Kugire Data Curation for the Kokinwakashu TEI/XML Data
 #+BEGIN_EXPORT typst
 #set page(
