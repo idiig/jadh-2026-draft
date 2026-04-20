@@ -47,6 +47,15 @@
 		   (add-to-list 'org-export-filter-final-output-functions
 				'my-typst-fix-label)))
 
+	       (with-eval-after-load 'ox-typst
+		 (defun my/ox-typst-example-block (example-block _contents _info)
+		   "Render #+begin_example as a Typst figure with a raw xml block."
+		   (let ((value (org-element-property :value example-block)))
+		     (format "#figure([\n```xml\n%s```\n])\n" value)))
+		 (push '(example-block . my/ox-typst-example-block)
+		       (org-export-backend-translate-alist
+			(org-export-get-backend 'typst))))
+
 	       (defun my-typst-image-width (text backend info)
 		 "Set image width to 0.5 textwidth in Typst export."
 		 (when (org-export-derived-backend-p backend 'typst)
