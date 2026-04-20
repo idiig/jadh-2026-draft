@@ -44,9 +44,9 @@
 
 * Introduction
 
-Kugire — phrase breaks within waka poems — are a basic structural element of waka, yet no standardized, publicly available kugire dataset exists [cite/cf:@kami1985Shin]. For TEI/XML encoding of waka, each project must annotate from scratch.
+Kugire — phrase breaks within waka poems — are a basic structural element of waka, yet no standardized, publicly available kugire dataset exists [cite/cf:@Kami1985Shin]. For TEI/XML encoding of waka, each project must annotate from scratch.
 
-[[https://github.com/atuko315/program-to-divide-31-syllable-Japanese-poem][atuko315/program-to-divide-31-syllable-Japanese-poem]] is one of the few existing kugire resources: a program to identify kugire with a dataset for the Hyakuninisshu, later applied to the Kokinwakashu and compared against [cite/t/c:@asaoka2008Waka] and [cite/t/c:@kami1985Shin]. The dataset, however, cannot capture the interpretive nature of kugire, which admits no single correct answer. [cite/t/c:@asaoka2007Waka] proposes two criteria — semantic independence of core sentences (necessary) and a clear grammatical break (sufficient) — both of which remain open to interpretation. A kugire dataset should therefore collect annotations from multiple sources, each with documented criteria.
+[[https://github.com/atuko315/program-to-divide-31-syllable-Japanese-poem][atuko315/program-to-divide-31-syllable-Japanese-poem]] is one of the few existing kugire resources: a program to identify kugire with a dataset for the Hyakuninisshu, later applied to the Kokinwakashu and compared against [cite/t/c:@Asaoka2008Waka] and [cite/t/c:@Kami1985Shin]. The dataset, however, cannot capture the interpretive nature of kugire, which admits no single correct answer. [cite/t/c:@Asaoka2007Waka] proposes two criteria — semantic independence of core sentences (necessary) and a clear grammatical break (sufficient) — both of which remain open to interpretation. A kugire dataset should therefore collect annotations from multiple sources, each with documented criteria.
 
 This project adds kugire as an interpretive annotation layer to the TEI/XML data of the Kokinwakashu, using rule-based and translation-based methods. Keeping kugire as a separate layer preserves the annotation criteria and any competing interpretations. The data supports analysis of waka structure, enjambment, diachronic change of kugire position, and its relation to poetic style.
 
@@ -55,7 +55,7 @@ This project adds kugire as an interpretive annotation layer to the TEI/XML data
 
 ** Base data
 
-The base data is a lexically extended version of the TEI data of the Karoku second-year manuscript of the Kokinwakashu [cite/cf:@ikuura2023Chokusen]. The extended dataset maps tokenization from the Hachidaishu Vocabulary Dataset [cite/cf:@Hodoscek2022Development] onto this segmented text, forming the basis for the kugire annotation.
+The base data is a lexically extended version of the TEI data of the Karoku second-year manuscript of the Kokinwakashu [cite/cf:@Ikuura2023Chokusen]. The extended dataset maps tokenization from the Hachidaishu Vocabulary Dataset [cite/cf:@Hodoscek2022Development] onto this segmented text, forming the basis for the kugire annotation.
 
 ** Reference data
 
