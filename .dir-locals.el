@@ -55,8 +55,8 @@
 			  (cap-str (when caption
 				     (org-export-data caption info))))
 		     (if cap-str
-			 (format "#figure(\n  [\n```xml\n%s```\n  ],\n  caption: [%s],\n  kind: image\n)\n" value cap-str)
-		       (format "#figure([\n```xml\n%s```\n], kind: image)\n" value))))
+			 (format "#figure(\n  [\n```xml\n%s```\n  ],\n  caption: [%s],\n  kind: image,\n  placement: none\n)\n" value cap-str)
+		       (format "#figure([\n```xml\n%s```\n], kind: image, placement: none)\n" value))))
 		 (push '(example-block . my/ox-typst-example-block)
 		       (org-export-backend-transcoders
 			(org-export-get-backend 'typst))))
