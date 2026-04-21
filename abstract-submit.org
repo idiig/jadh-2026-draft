@@ -33,13 +33,10 @@
 // Figure and table spacing
 #show figure: set block(above: 1.2em, below: 1.2em)
 #set figure(placement: auto)
-#show figure.caption: it => align(left, block(width: 61.8%, context {
+#show figure.caption: it => align(center, block(width: 61.8%, align(left, context {
   let label = strong(it.supplement + [ ] + it.counter.display(it.numbering) + it.separator)
   par(hanging-indent: measure(label).width, label + it.body)
-}))
-
-// Sty
-#import "@preview/toffee-tufte:0.1.0": *
+})))
 
 #align(center)[
   #set text(size: 18pt)
