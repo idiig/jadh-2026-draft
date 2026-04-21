@@ -115,7 +115,7 @@ Our method extends the program[fn::https://github.com/atuko315/program-to-divide
 
 Strong candidates are phrases ending in the conclusive form. For example, in the first poem of the Kokinwakashu, the past-tense auxiliary verb /keri/ appears in the conclusive form, indicating a grammatical break after it ([[fig:example]]-(1)).
 
-#+caption: Three types of kugire annotation derived from morphological analysis: (1) strong, (2) moderate, and (3) weak candidates. Glossing follows [cite/cf:@Zisk2023Glossing].
+#+caption: Three types of kugire annotation derived from morphological analysis: (1) strong, (2) moderate, and (3) weak candidates. Glossing follows [cite/t/c:@Zisk2023Glossing].
 #+name: fig:example
 #+attr_latex: scale=100%
 [[./example.svg]]
