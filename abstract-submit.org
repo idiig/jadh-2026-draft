@@ -127,7 +127,7 @@ Weak candidates are phrases where a sentence-final particle suggests a break, bu
 
 ** LLM-assisted translation-based kugire suggestion
 
-We also use a large language model (LLM) to suggest candidate kugire positions from the explanatory translation of [kaneko] as encoded by [yamamoto]. Where the rule-based approach draws on morphological and grammatical features, the LLM-assisted translation-based approach draws on the contemporary Japanese translation, capturing breaks rooted in the translator's reading rather than grammatical form alone.
+We also use a large language model (LLM) to suggest candidate kugire positions from the explanatory translation of [cite/cf:@Kaneko1933Kokinwakashu] as encoded by [cite/cf:@Yamamoto2024Kokinwakashua]. Where the rule-based approach draws on morphological and grammatical features, the LLM-assisted translation-based approach draws on the contemporary Japanese translation, capturing breaks rooted in the translator's reading rather than grammatical form alone.
 
 The LLM is =qwen2.5=, served locally via Ollama. The model receives the five segments of the original poem and the corresponding explanatory translation, and outputs a JSON object with three fields: =alignment= (step 1), =breaks= (step 2), and =positions= (the resulting candidate indices).
 
