@@ -62,11 +62,11 @@
 			(org-export-get-backend 'typst))))
 
 	       (defun my-typst-image-width (text backend info)
-		 "Set image width to 0.5 textwidth in Typst export."
+		 "Set image width to 100% in Typst export."
 		 (when (org-export-derived-backend-p backend 'typst)
-		   (replace-regexp-in-string 
-		    "#figure(\\[#image(\\([^)]+\\))\\])"
-		    "#figure([#image(\\1, width: 100%)])"
+		   (replace-regexp-in-string
+		    "#figure(\\[#image(\\([^)]+\\))\\]"
+		    "#figure([#image(\\1, width: 100%)]"
 		    text)))
 
 	       (with-eval-after-load 'ox-typst
