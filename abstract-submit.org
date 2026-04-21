@@ -7,7 +7,8 @@
   paper: "a4",
   width: 210mm,
   height: 297mm,
-  columns: 1
+  columns: 1,
+  numbering: "1"
 )
 
 #show figure: set align(left)
