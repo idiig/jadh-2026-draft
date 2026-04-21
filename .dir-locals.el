@@ -48,10 +48,15 @@
 				'my-typst-fix-label)))
 
 	       (with-eval-after-load 'ox-typst
-		 (defun my/ox-typst-example-block (example-block _contents _info)
+		 (defun my/ox-typst-example-block (example-block _contents info)
 		   "Render #+begin_example as a Typst figure with a raw xml block."
-		   (let ((value (org-element-property :value example-block)))
-		     (format "#figure([\n```xml\n%s```\n])\n" value)))
+		   (let* ((value (org-element-property :value example-block))
+			  (caption (org-export-get-caption example-block))
+			  (cap-str (when caption
+				     (org-export-data caption info))))
+		     (if cap-str
+			 (format "#figure(\n  [\n```xml\n%s```\n  ],\n  caption: [%s]\n)\n" value cap-str)
+		       (format "#figure([\n```xml\n%s```\n])\n" value))))
 		 (push '(example-block . my/ox-typst-example-block)
 		       (org-export-backend-transcoders
 			(org-export-get-backend 'typst))))
