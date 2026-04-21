@@ -33,6 +33,7 @@
 // Figure and table spacing
 #show figure: set block(above: 1.2em, below: 1.2em)
 #set figure(placement: auto)
+#show figure.caption: it => align(center, block(width: 61.8%, it))
 
 // Sty
 #import "@preview/toffee-tufte:0.1.0": *
