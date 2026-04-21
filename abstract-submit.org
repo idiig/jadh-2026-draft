@@ -69,7 +69,7 @@ The output is =kokin-kugire.xml=, a TEI/XML file derived from the base data by a
 
 Each kugire position is encoded as a ~<k>~ element placed after the final ~<seg>~ child of the corresponding line element ~<l>~:
 
-#+caption: TEI/XML encoding of kugire annotations for poem 1 of the Kokinwakashu. Each =<k>= element marks a candidate break position. Morphological candidates carry a three-level certainty grade (=cert=: =high=, =mid=, =low=); translation-based candidates (=source="kaneko"=) carry none.
+#+caption: TEI/XML encoding of kugire annotations for poem 1 of the Kokinwakashu. Each ~<k>~ element marks a candidate break position. Morphological candidates carry a three-level certainty grade (~cert~: ~high~, ~mid~, ~low~); translation-based candidates (~source="kaneko"~) carry none.
 #+begin_example
 <l n="1" xml:id="n1">
   <seg>年の内に</seg>
