@@ -83,7 +83,7 @@ Each kugire position is encoded as a ~<k>~ element placed after the final ~<seg>
 #+end_example
 
 The rule-based method identifies three candidate positions. The
-strongest (~cert="high"~) is after the second segment, where /けり/
+strongest (~cert="high"~) is after the second segment, where /keri/
 appears in the conclusive form, ending the first complete sentence. A
 weaker candidate (~cert="low"~) is also placed after the third
 segment. The LLM-assisted translation-based method, drawing on
