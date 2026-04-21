@@ -1,5 +1,5 @@
 #+bibliography: references.bib
-#+cite_export: csl ieee.csl
+#+cite_export: csl .csl-styles/digital-scholarship-in-the-humanities.csl en-US
 #+options: toc:nil
 #+title: Kugire Data Curation for the Kokinwakashu TEI/XML Data
 #+BEGIN_EXPORT typst
