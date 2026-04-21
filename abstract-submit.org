@@ -134,7 +134,7 @@ The LLM is =qwen2.5=, served locally via Ollama. The model receives the five seg
 
 The prompt instructs the model to align segments to the translation, detect sentence boundaries in the translation, and map them back to segment positions — mirroring the workflow of a human annotator using a translation as reference. Three few-shot examples from real Kokinwakashu poems demonstrate this chain, covering no-kugire, second-segment, and fourth-segment cases. Valid positions from the JSON output are recorded independently of rule-based results, e.g., ~<k n="2" source="kaneko"/>~.
 
-* Conculusion
+* Conclusion
 This project produced a TEI/XML dataset prototype of kugire annotations for the Kokinwakashu, derived from a lexically extended base and informed by both rule-based and LLM-assisted translation-based methods. The dataset preserves multiple interpretations of kugire, supporting analysis of waka structure and diachronic change. 
 
 * References
