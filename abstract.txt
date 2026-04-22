@@ -2,8 +2,8 @@
 
   Kugire — phrase breaks within waka poems — are a basic structural
   element of waka, yet no standardized, publicly available kugire
-  dataset exists (Kami, 1985). For TEI/XML encoding of waka, each
-  project must annotate from scratch.
+  dataset exists. For TEI/XML encoding of waka, each project must
+  annotate from scratch.
 
   Atuko315 (2022) is one of the few existing kugire resources: a
   program to identify kugire with a dataset for the Hyakuninisshu,
