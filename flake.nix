@@ -23,6 +23,8 @@
             pdf2svg
             inkscape
             typst
+            zip
+            unzip
           ];
 
           shellHook = ''
