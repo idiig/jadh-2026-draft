@@ -1,0 +1,390 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2026-06-29 Mon 09:21 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Kugire Data Curation for the Kokinwakashu TEI/XML Data</title>
+<meta name="author" content="nixos" />
+<meta name="generator" content="Org Mode" />
+<style type="text/css">
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-c:before { content: 'C'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'JavaScript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">Kugire Data Curation for the Kokinwakashu TEI/XML Data</h1>
+<div id="outline-container-org4f24183" class="outline-2">
+<h2 id="org4f24183"><span class="section-number-2">1.</span> Introduction</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+Kugire — phrase breaks within waka poems — are well suited to studying the diversity of poetic interpretation. Translations of waka are practices of expert interpretation: they embed philological and literary knowledge into a reading of the text. Kugire is a latent structural property of every waka, and comparing where different experts locate kugire across the full anthology can serve as a measurable index of both the diversity and the stability of poetic interpretation. Analyzing such interpretive diversity in relation to poetic structure requires data.
+</p>
+
+<p>
+<a href="https://github.com/atuko315/program-to-divide-31-syllable-Japanese-poem.">atuko315/program-to-divide-31-syllable-Japanese-poem</a> is one of the few existing kugire resources: a program to identify kugire with a dataset for the Hyakuninisshu, later applied to the Kokinwakashu and compared against Asaoka (<a href="#citeproc_bib_item_1">2008</a>) and Kami (<a href="#citeproc_bib_item_5">1985</a>). The dataset, however, cannot capture the interpretive nature of kugire (see <a href="#citeproc_bib_item_5">Kami, 1985</a>), which admits no single correct answer. Asaoka (<a href="#citeproc_bib_item_2">2007</a>) proposes two criteria — semantic independence of core sentences (necessary) and a clear grammatical break (sufficient) — both of which remain open to interpretation. Across existing resources, kugire tends to be treated as a binary property, which cannot represent the certainty of individual judgements or the range of expert readings. A kugire dataset should therefore collect annotations from multiple sources, each with documented criteria.
+</p>
+
+<p>
+This project adds kugire as an interpretive annotation layer to the TEI/XML data of the Kokinwakashu, using rule-based and translation-based methods. Keeping kugire as a separate layer preserves the annotation criteria and any competing interpretations.
+</p>
+</div>
+</div>
+<div id="outline-container-org13562ed" class="outline-2">
+<h2 id="org13562ed"><span class="section-number-2">2.</span> Data sources</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+The base data is a lexically extended version of the TEI data of the Karoku second-year manuscript of the Kokinwakashu (<a href="#citeproc_bib_item_4">Ikuura et al., 2023</a>). The extended dataset maps tokenization from the Hachidaishu Vocabulary Dataset (<a href="#citeproc_bib_item_3">Hodošček and Yamamoto, 2022</a>) onto this segmented text, forming the basis for the kugire annotation.
+</p>
+
+<p>
+For the rule-based method, we use the Hachidaishu Part-of-Speech Dataset (<a href="#citeproc_bib_item_7">Yamamoto et al., 2024a</a>), which provides conjugation and part-of-speech data for each token. For the translation-based method, we use the explanatory translation of the Kokinwakashu by (<a href="#citeproc_bib_item_6">Kaneko, 1933</a>), the earliest twentieth-century explanatory translation of the anthology, digitized and published on Zenodo (<a href="#citeproc_bib_item_8">Yamamoto et al., 2024b</a>).
+</p>
+</div>
+</div>
+<div id="outline-container-orgfc7b195" class="outline-2">
+<h2 id="orgfc7b195"><span class="section-number-2">3.</span> Output Data</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+The output is a TEI/XML file derived from the base data by appending kugire annotations to each poem. The original text, segmentation, and all existing TEI markup are preserved without modification; the annotation layer is additive.
+</p>
+
+<p>
+Each kugire position is encoded as a <code>&lt;k&gt;</code> element placed after the final <code>&lt;seg&gt;</code> child of the corresponding line element <code>&lt;l&gt;</code>:
+</p>
+
+<pre class="example" id="orgd504a4a">
+&lt;l n="1" xml:id="n1"&gt;
+  &lt;seg&gt;年の内に&lt;/seg&gt;
+  &lt;seg&gt;春はきにけり&lt;/seg&gt;
+  &lt;seg&gt;ひとゝせを&lt;/seg&gt;
+  &lt;seg&gt;こそとやいはむ&lt;/seg&gt;
+  &lt;seg&gt;ことしとやいはむ&lt;/seg&gt;
+  &lt;k n="2" source="morph" cert="high"/&gt;
+  &lt;k n="3" source="morph" cert="low"/&gt;
+  &lt;k n="4" source="morph" cert="high"/&gt;
+  &lt;k n="2" source="kaneko"/&gt;
+&lt;/l&gt;
+</pre>
+
+<p>
+The rule-based method identifies three candidate positions. The
+strongest (<code>cert="high"</code>) is after the second segment, where <i>keri</i>
+appears in the conclusive form, ending the first complete sentence. A
+weaker candidate (<code>cert="low"</code>) is also placed after the third
+segment. The LLM-assisted translation-based method, drawing on
+explanatory translation (<a href="#citeproc_bib_item_6">Kaneko, 1933</a>), identifies
+only the second segment as a kugire. The competing candidates are
+preserved independently.
+</p>
+
+<p>
+The <code>@n</code> attribute is the 1-based segment index; <code>@source</code> is the evidence code; <code>@cert</code> (<code>high</code> / <code>mid</code> / <code>low</code>) grades morphological certainty for rule-based annotations and is omitted for translation-based ones.
+</p>
+
+<p>
+Multiple <code>&lt;k&gt;</code> elements at the same position represent competing interpretations — from the same source at different grammatical strengths, or from different sources — and are preserved as-is. No normalization or deduplication is applied.
+</p>
+
+<p>
+The <code>&lt;k&gt;</code> element is a project-internal tag pending a decision on the target TEI encoding. A future revision will replace it with standard TEI mechanisms: <code>&lt;anchor&gt;</code> elements to mark break positions in the text, and <code>&lt;interpGrp&gt;&lt;interp&gt;</code> in <code>&lt;standOff&gt;</code> to record the source and certainty of each annotation:
+</p>
+
+
+<div id="orgbaeddcc" class="figure">
+<p><img style="width:100%" src="./fig2-anchor-encoding.svg" alt="fig2-anchor-encoding.svg" class="org-svg" />
+</p>
+<p><span class="figure-number">Figure 1: </span>Prospective encoding using <code>&lt;anchor&gt;</code> and <code>&lt;interpGrp&gt;&lt;interp&gt;</code> in <code>&lt;standOff&gt;</code>.</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org69c6f2f" class="outline-2">
+<h2 id="org69c6f2f"><span class="section-number-2">4.</span> Annotation pipeline</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+The annotation follows an LLM-assisted pipeline:
+</p>
+
+<ol class="org-ol">
+<li>Rule-based suggestion of candidate kugire positions based on Yamamoto et al. (<a href="#citeproc_bib_item_7">2024a</a>)</li>
+<li>LLM-assisted translation-based suggestion of candidate kugire positions based on Kaneko (<a href="#citeproc_bib_item_6">1933</a>; <a href="#citeproc_bib_item_8">Yamamoto et al., 2024b</a>)</li>
+<li>Review and correction in a pop-up editor showing the original poem and its reference data</li>
+<li>Rendering the confirmed annotation into the TEI data</li>
+</ol>
+
+<p>
+The pipeline is intended to accelerate annotation and reduce cognitive load, implemented as a reusable set of scripts designed to extend to additional translation sources.
+</p>
+</div>
+<div id="outline-container-orgd93a1c2" class="outline-3">
+<h3 id="orgd93a1c2"><span class="section-number-3">4.1.</span> Rule-based (grammar-wise) kugire suggestion</h3>
+<div class="outline-text-3" id="text-4-1">
+<p>
+Our method extends the program<sup><a id="fnr.1" class="footref" href="#fn.1" role="doc-backlink">1</a></sup>, which flags conclusive forms, copulas, and sentence-final particles as kugire, by outputting graded candidates — strong, moderate, and weak — rather than a single result.
+</p>
+
+<p>
+Strong candidates are phrases ending in the conclusive form. For example, in the first poem of the Kokinwakashu, the past-tense auxiliary verb <i>keri</i> appears in the conclusive form, indicating a grammatical break after it (<a href="#org276275a">2</a>-(1)).
+</p>
+
+
+<div id="org276275a" class="figure">
+<p><img style="width:100%" src="./example.svg" alt="example.svg" class="org-svg" />
+</p>
+<p><span class="figure-number">Figure 2: </span>Three types of kugire annotation derived from morphological analysis: (1) strong, (2) moderate, and (3) weak candidates. Glossing follows Zisk (<a href="#citeproc_bib_item_9">2023</a>).</p>
+</div>
+
+<p>
+Moderate candidates are phrases where the copula or information structure suggests a break, though not conclusively. In the second poem of the Kokinwakashu, the segments before and after <code>wo</code> are syntactically connected, yet the former presents a scene while the latter offers a conjectural statement about it — a shift that may indicate a break (<a href="#org276275a">2</a>-(2)).
+</p>
+
+<p>
+Weak candidates are phrases where a sentence-final particle suggests a break, but the surrounding segments remain semantically interdependent. In the third poem of the Kokinwakashu, the question particle in the second segment may suggest a break, yet the following segment answers that question — semantic interdependence that makes the break uncertain (<a href="#org276275a">2</a>-(3)).
+</p>
+</div>
+</div>
+<div id="outline-container-orgbc8321b" class="outline-3">
+<h3 id="orgbc8321b"><span class="section-number-3">4.2.</span> LLM-assisted translation-based kugire suggestion</h3>
+<div class="outline-text-3" id="text-4-2">
+<p>
+We also use a large language model (LLM) to suggest candidate kugire positions from the explanatory translation of (<a href="#citeproc_bib_item_6">Kaneko, 1933</a>) as encoded by (<a href="#citeproc_bib_item_8">Yamamoto et al., 2024b</a>). Where the rule-based approach draws on morphological and grammatical features, the LLM-assisted translation-based approach draws on the contemporary Japanese translation, capturing breaks rooted in the translator's reading rather than grammatical form alone.
+</p>
+
+<p>
+The LLM is <code>qwen2.5</code>, served locally via Ollama. The model receives the five segments of the original poem and the corresponding explanatory translation, and outputs a JSON object with three fields: <code>alignment</code> (step 1), <code>breaks</code> (step 2), and <code>positions</code> (the resulting candidate indices).
+</p>
+
+<p>
+The prompt instructs the model to align segments to the translation, detect sentence boundaries in the translation, and map them back to segment positions — mirroring the workflow of a human annotator using a translation as reference. Three few-shot examples from real Kokinwakashu poems demonstrate this chain, covering no-kugire, second-segment, and fourth-segment cases. Valid positions from the JSON output are recorded independently of rule-based results, e.g., <code>&lt;k n="2" source="kaneko"/&gt;</code>.
+</p>
+
+<p>
+In practice, translation-based suggestions require frequent correction by the annotator. The tool reduces input effort but does not replace human judgement. More capable LLMs may improve suggestion quality in future work.
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-orgf564e17" class="outline-2">
+<h2 id="orgf564e17"><span class="section-number-2">5.</span> Conclusion</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+This project produced a TEI/XML dataset prototype of kugire annotations for the Kokinwakashu, derived from a lexically extended base and informed by both rule-based and LLM-assisted translation-based methods. The dataset preserves multiple interpretations of kugire, supporting analysis of the relationship between waka structure and interpretive diversity. 
+</p>
+</div>
+</div>
+<div id="outline-container-org67a316e" class="outline-2">
+<h2 id="org67a316e"><span class="section-number-2">6.</span> References</h2>
+<div class="outline-text-2" id="text-6">
+<div class="csl-bib-body">
+  <div class="csl-entry"><a id="citeproc_bib_item_1"></a><b>Asaoka Sumiaki 浅岡純朗.</b> (2008). Waka ni Okeru Bun no Kosei: Heian Waka no Tenkanki ni Kansuru Ichi Kosatsu/Sentence Structure in Waka: A Study on the Transitional Period of Heian Waka [和歌における文の構成―平安和歌の転換期に関する一考察―]. <i>Nishogakusha Daigaku Jinbun Ronsoˉ/Nishogakusha University Journal of Humanities</i>, <b>81</b>, pp. 130–40.</div>
+  <div class="csl-entry"><a id="citeproc_bib_item_2"></a><b>Asaoka Sumiaki 浅岡純朗.</b> (2007). Waka no Kugire ni Kansuru Ichi Kosatsu: Atarashii Nintei Kijun Shian no Koso/A Study on Kugire in Waka: Toward a New Proposal for Recognition Criteria [和歌の句切れに関する一考察 : 新しい認定基準私案の構想]. <i>Nishogakusha Daigaku Jinbun Ronsoˉ/Nishogakusha University Journal of Humanities</i>, <b>78</b>, pp. 113–22.</div>
+  <div class="csl-entry"><a id="citeproc_bib_item_3"></a><b>Hodošček, B. and Yamamoto, H.</b> (2022). Development of Datasets of the Hachidaishū and Tools for the Understanding of the Characteristics and Historical Evolution of Classical Japanese Poetic Vocabulary. In <i>Digital Humanities 2022 Conference Abstracts</i>. Tokyo, Japan.</div>
+  <div class="csl-entry"><a id="citeproc_bib_item_4"></a><b>Ikuura Hiroyuki 幾浦裕之., Nagasaki Kiyonori 永崎研宣. and Kato Yumie 加藤弓枝.</b> (2023). Chokusen Wakashu no Kozo-ka to Teiji Shuho ni Kansuru Kokoromi: Karoku Ninenhon Kokinwakashu wo Jirei to shite/An Attempt at Structuring and Presenting Imperial Waka Anthologies: The Karoku Second-Year Manuscript of the Kokinwakashu as a Case Study [勅撰和歌集の構造化と提示手法に関する試み ―嘉禄二年本『古今和歌集』を事例として―]. In <i>Proceedings of JINMONCOM 2023</i>. Information Processing Society of Japan, pp. 183–90.</div>
+  <div class="csl-entry"><a id="citeproc_bib_item_5"></a><b>Kami Hiroyuki 紙宏行.</b> (1985). Shin-Kokin ni Okeru Sankugire no Hyogen Kozo/The Expressive Structure of Third-Line Breaks in the Shin-Kokinshū [新古今における三句切れの表現構造]. <i>Bunkyo Daigaku Joshi Tandai-bu Kenkyu Kiyo/Bunkyo University Women’s College Bulletin</i>, <b>29</b>, pp. 10–23.</div>
+  <div class="csl-entry"><a id="citeproc_bib_item_6"></a><b>Kaneko Motoomi 金子元臣.</b> (1933). <i>Kokinwakashu Hyoshaku: Showa Shimban/An Annotated Kokinwakashu: The New Showa Edition [古今和歌集評釈: 昭和新版]</i>. Tokyo: Meijishoin.</div>
+  <div class="csl-entry"><a id="citeproc_bib_item_7"></a><b>Yamamoto, H., Hodošček, B. and Chen, X.</b> (2024a). Hachidaishu Part-of-Speech Dataset. <a href="https://doi.org/10.5281/zenodo.13940187">10.5281/zenodo.13940187</a>.</div>
+  <div class="csl-entry"><a id="citeproc_bib_item_8"></a><b>Yamamoto, H., Hodošček, B. and Chen, X.</b> (2024b). Kokinwakashu Hyoshaku by Motoomi Kaneko Translation Sentence Vocabulary Dataset. <a href="https://doi.org/10.5281/zenodo.13942707">10.5281/zenodo.13942707</a>.</div>
+  <div class="csl-entry"><a id="citeproc_bib_item_9"></a><b>Zisk, M.</b> (2023). Glossing Glosses: Methods for Transcribing and Glossing Japanese Kundoku Texts. In Cinato, F.Lahaussois, A.and Whitman, J.B. (eds), <i>Glossing Practice, Comparative Perspectives</i>. Lexington Books, pp. 47–82.</div>
+</div>
+</div>
+</div>
+<div id="footnotes">
+<h2 class="footnotes">Footnotes: </h2>
+<div id="text-footnotes">
+
+<div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1" role="doc-backlink">1</a></sup> <div class="footpara" role="doc-footnote"><p class="footpara"><a href="https://github.com/atuko315/program-to-divide-31-syllable-Japanese-poem">https://github.com/atuko315/program-to-divide-31-syllable-Japanese-poem</a>.</p></div></div>
+
+
+</div>
+</div></div>
+<div id="postamble" class="status">
+<p class="author">Author: nixos</p>
+<p class="date">Created: 2026-06-29 Mon 09:21</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>
