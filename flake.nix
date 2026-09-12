@@ -15,21 +15,40 @@
         "aarch64-darwin"
       ];
 
-      perSystem = { pkgs, lib, ... }: {
-        devShells.default = lib.mkForce (pkgs.mkShell {
-          packages = with pkgs; [
-            librsvg
-            imagemagick
-            pdf2svg
-            inkscape
-            typst
-            zip
-            unzip
-          ];
+      perSystem = { pkgs, lib, ... }:
+        let
+          rEnv = pkgs.rWrapper.override {
+            packages = with pkgs.rPackages; [
+              tidyverse
+              ggdist
+              ggridges
+              ggokabeito
+              scales
+              svglite
+              knitr
+              kableExtra
+              rmarkdown
+              rstatix
+            ];
+          };
+        in {
+          devShells.default = lib.mkForce (pkgs.mkShell {
+            packages = with pkgs; [
+              librsvg
+              imagemagick
+              pdf2svg
+              inkscape
+              typst
+              zip
+              unzip
+              quarto     # render qmd reports
+              rEnv       # R with report/plot packages
+            ];
 
-          shellHook = ''
-          '';
-        });
-      };
+            shellHook = ''
+              export QUARTO_R="${rEnv}/bin/R"
+            '';
+          });
+        };
     };
 }

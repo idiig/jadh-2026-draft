@@ -1,0 +1,8 @@
+morph_level,poems,any_translator_differs_from_morph,any_translator_differs_rate,all_translators_differ_from_morph,all_translators_differ_rate,translator_majority_differs_from_morph,translator_majority_differs_rate
+low,1000,659,0.659000,362,0.362000,527,0.527000
+medium,1000,656,0.656000,360,0.360000,519,0.519000
+high,1000,531,0.531000,174,0.174000,321,0.321000
+low_medium,1000,722,0.722000,486,0.486000,628,0.628000
+medium_high,1000,646,0.646000,371,0.371000,512,0.512000
+low_medium_high,1000,713,0.713000,487,0.487000,621,0.621000
+translator_disagreement,1000,388,0.388000,,,,
