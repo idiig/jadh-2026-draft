@@ -1,0 +1,112 @@
+\newif\ifEnglish
+\Englishfalse
+\Englishtrue
+
+\documentclass[unicode]{beamer}
+
+\usepackage[orientation=portrait,size=a0,scale=1.1]{beamerposter}
+
+\usetheme[footertext={JADH 2026 \textbullet\ September 11--13, 2026 \textbullet\ Kyushu University}]{SimplePoster}
+
+\usefonttheme{professionalfonts}
+\useinnertheme{rectangles}
+
+\usepackage{version}
+\usepackage{luatexja}
+\usepackage{graphicx}
+\usepackage{svg}
+\usepackage{natbib}
+\usepackage{float}
+\renewcommand{\kanjifamilydefault}{\gtdefault}
+
+\usepackage{caption}
+\captionsetup{format=hang, labelfont=bf, labelsep=colon, font=small}
+\setbeamertemplate{caption}[numbered]
+
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{colortab}
+\usepackage{colortbl}
+\usepackage{arydshln}
+\usepackage{tcolorbox}
+\usepackage{tikz}
+
+\usebackgroundtemplate{%
+  \begin{tikzpicture}[remember picture,overlay]
+    \node[opacity=0.3,anchor=west,inner sep=0pt] at (current page.west) {%
+      \includegraphics[height=\paperheight]{../images/poster-background2.jpg}%
+    };
+  \end{tikzpicture}%
+}
+
+\usepackage{fontspec}
+\newfontfamily\emojifont{NotoColorEmoji}[
+  Path=/nix/store/557hw66ma67d9csqbv7s8m593wzh3b01-noto-fonts-color-emoji-2.051/share/fonts/noto/,
+  Extension=.ttf,
+  Renderer=HarfBuzz
+]
+
+\input{title.tex}
+\input{author.tex}
+
+\newsavebox{\topfigbox}
+\newsavebox{\inputdatabox}
+\newlength{\topfigheight}
+\newlength{\bodycolumnheight}
+\newlength{\subcolwidth}
+\newlength{\inputdataheight}
+\newlength{\nestedheight}
+\newlength{\topfigvfillreserve}
+\newlength{\postercolwidth}
+\newlength{\postergap}
+\newlength{\leftgroupwidth}
+
+\begin{document}
+\begin{frame}[t]
+
+\setlength{\postergap}{0.02\textwidth}
+\setlength{\postercolwidth}{\dimexpr(\textwidth-2\postergap)/3\relax}
+\setlength{\leftgroupwidth}{\dimexpr2\postercolwidth+\postergap\relax}
+
+\savebox{\topfigbox}{\begin{minipage}[t]{\leftgroupwidth}\input{fig-sarumaru-triptych-standalone.tex}\end{minipage}}
+\setlength{\topfigheight}{\ht\topfigbox}
+\addtolength{\topfigheight}{\dp\topfigbox}
+\setlength{\bodycolumnheight}{\dimexpr\textheight-2\baselineskip\relax}
+\setlength{\topfigvfillreserve}{0.015\bodycolumnheight}
+\setlength{\nestedheight}{\bodycolumnheight}
+\addtolength{\nestedheight}{-\topfigheight}
+\addtolength{\nestedheight}{-\topfigvfillreserve}
+
+  \noindent
+  \begin{minipage}[t][\bodycolumnheight][t]{\leftgroupwidth}
+      \setlength{\subcolwidth}{\postercolwidth}%
+      \savebox{\inputdatabox}{\begin{minipage}[t]{\subcolwidth}\input{methods-data.tex}\end{minipage}}%
+      \setlength{\inputdataheight}{\ht\inputdatabox}%
+      \addtolength{\inputdataheight}{\dp\inputdatabox}%
+      \usebox{\topfigbox}%
+      \vfill
+      \par\nointerlineskip
+      \noindent
+      \begin{minipage}[t][\nestedheight][s]{\postercolwidth}
+          \begin{minipage}[t][\inputdataheight][s]{\linewidth}
+          \input{what-does-this-work-do.tex}
+          \vfill
+          \input{why-kugire.tex}
+          \end{minipage}
+          \vfill
+          \input{output-data.tex}
+      \end{minipage}\hspace{\postergap}%
+      \begin{minipage}[t][\nestedheight][s]{\postercolwidth}
+          \usebox{\inputdatabox}
+          \vfill
+          \input{methods-translation.tex}
+      \end{minipage}%
+  \end{minipage}\hspace{\postergap}%
+  \begin{minipage}[t][\bodycolumnheight][s]{\postercolwidth}
+      \input{methods-morphology.tex}
+      \vfill
+      \input{results.tex}
+  \end{minipage}
+
+\end{frame}
+\end{document}

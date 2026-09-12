@@ -1,0 +1,44 @@
+\begin{block}{Output data}
+
+The output file is \texttt{kokin-kugire.xml}. Each kugire candidate is appended as
+a \texttt{<k>} element inside the corresponding \texttt{<l>}, keeping at least:
+\begin{itemize}
+\item \texttt{@n}: which segment the kugire falls after
+\item \texttt{@source}: the judgment source, e.g.\ \texttt{morph} or \texttt{kaneko}
+\item \texttt{@cert}: the certainty given by the grammatical rule (\texttt{high}/\texttt{mid}/\texttt{low})
+\end{itemize}
+
+A single poem can retain multiple \texttt{<k>} elements --- this preserves both the
+grammatically visible break point and the interpretive break point evidenced in
+translation side by side.
+
+\texttt{<k>} is a project-internal tag pending a decision on the target TEI encoding.
+A future revision will replace it with \texttt{<anchor>} and \texttt{<standOff>}:
+
+\definecolor{xmlgray}{HTML}{888888}
+\definecolor{xmltag}{HTML}{0055AA}
+\definecolor{xmlattr}{HTML}{AA3300}
+\definecolor{xmlval}{HTML}{007700}
+
+\begin{figure}[H]\centering
+\begin{tcolorbox}[colback=black!2, colframe=black!15, boxrule=0.5pt, arc=2pt,
+  width=0.9\textwidth, left=8pt, right=8pt, top=6pt, bottom=6pt]
+\ttfamily\small
+\textcolor{xmlgray}{<}\textcolor{xmltag}{seg}\textcolor{xmlgray}{>}年の内に\textcolor{xmlgray}{</}\textcolor{xmltag}{seg}\textcolor{xmlgray}{>}\\[2pt]
+\textcolor{xmlgray}{<}\textcolor{xmltag}{anchor} \textcolor{xmlattr}{xml:id}\textcolor{xmlgray}{=}"\textcolor{xmlval}{n1\_break\_after\_2}"\textcolor{xmlgray}{/>}\\[2pt]
+\textcolor{xmlgray}{<}\textcolor{xmltag}{seg}\textcolor{xmlgray}{>}春はきにけり\textcolor{xmlgray}{</}\textcolor{xmltag}{seg}\textcolor{xmlgray}{>}\\[8pt]
+\textcolor{xmlgray}{<}\textcolor{xmltag}{standOff}\textcolor{xmlgray}{>}\\[2pt]
+\hspace*{1.5em}\textcolor{xmlgray}{<}\textcolor{xmltag}{interpGrp} \textcolor{xmlattr}{type}\textcolor{xmlgray}{=}"\textcolor{xmlval}{kugire}"\textcolor{xmlgray}{>}\\[2pt]
+\hspace*{3em}\textcolor{xmlgray}{<}\textcolor{xmltag}{interp} \textcolor{xmlattr}{target}\textcolor{xmlgray}{=}"\textcolor{xmlval}{\#n1\_break\_after\_2}"\\[2pt]
+\hspace*{5em}\textcolor{xmlattr}{source}\textcolor{xmlgray}{=}"\textcolor{xmlval}{\#morph}" \textcolor{xmlattr}{cert}\textcolor{xmlgray}{=}"\textcolor{xmlval}{high}"\textcolor{xmlgray}{/>}\\[2pt]
+\hspace*{3em}\textcolor{xmlgray}{<}\textcolor{xmltag}{interp} \textcolor{xmlattr}{target}\textcolor{xmlgray}{=}"\textcolor{xmlval}{\#n1\_break\_after\_2}"\\[2pt]
+\hspace*{5em}\textcolor{xmlattr}{source}\textcolor{xmlgray}{=}"\textcolor{xmlval}{\#kaneko}"\textcolor{xmlgray}{/>}\\[2pt]
+\hspace*{1.5em}\textcolor{xmlgray}{</}\textcolor{xmltag}{interpGrp}\textcolor{xmlgray}{>}\\[2pt]
+\textcolor{xmlgray}{</}\textcolor{xmltag}{standOff}\textcolor{xmlgray}{>}
+\end{tcolorbox}
+\setcounter{figure}{3}
+\caption{TEI encoding scheme expressing kugire annotation using \texttt{<anchor>}
+and \texttt{<standOff>}. Break position, judgment source, and certainty are recorded
+separately, so a single poem can retain multiple interpretations.}
+\end{figure}
+\end{block}

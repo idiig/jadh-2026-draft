@@ -98,7 +98,7 @@ The =<k>= element is a project-internal tag pending a decision on the target TEI
 
 #+caption: Prospective encoding using =<anchor>= and =<interpGrp><interp>= in =<standOff>=.
 #+name: fig:anchor
-[[./fig2-anchor-encoding.svg]]
+[[../images/fig2-anchor-encoding.svg]]
 
 * Annotation pipeline
 
@@ -111,6 +111,12 @@ The annotation follows an LLM-assisted pipeline:
 
 The pipeline is intended to accelerate annotation and reduce cognitive load, implemented as a reusable set of scripts designed to extend to additional translation sources.
 
+#+caption: Qwen2.5-assisted translation-based kugire suggestion with the first poem and Kaneko's explanatory translation as an example. The model's proposed position is corrected by human review.
+#+name: fig:annotation-pipeline
+[[../images/fig-annotation-pipeline.svg]]
+
+The figure uses a romanized transcription and English gloss for legibility. The corresponding poem is =年の内に／春はきにけり／ひとゝせを／こそとやいはむ／ことしとやいはむ=; Kaneko's translation is =年内に思い掛けず春は来たことであるわ、さてはこの同じ一年の内の昨日までを、去年と言おうか、それとも今年と言おうか。=
+
 ** Rule-based (grammar-wise) kugire suggestion
 
 Our method extends the aforementioned program, which flags conclusive forms, copulas, and sentence-final particles as kugire, by outputting graded candidates — strong, moderate, and weak — rather than a single result.
@@ -120,7 +126,7 @@ Strong candidates are phrases ending in the conclusive form. For example, in the
 #+caption: Three types of kugire annotation derived from morphological analysis: (1) strong, (2) moderate, and (3) weak candidates. Glossing follows [cite/t/c:@Zisk2023Glossing].
 #+name: fig:example
 #+attr_latex: scale=100%
-[[./example.svg]]
+[[../images/example.svg]]
 
 Moderate candidates are phrases where the copula or information structure suggests a break, though not conclusively. In the second poem of the Kokinwakashu, the segments before and after =wo= are syntactically connected, yet the former presents a scene while the latter offers a conjectural statement about it — a shift that may indicate a break ([[fig:example]]-(2)).
 

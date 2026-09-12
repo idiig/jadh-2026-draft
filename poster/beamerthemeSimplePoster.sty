@@ -1,0 +1,201 @@
+\ProvidesPackage{beamerthemeSimplePoster}
+\mode<presentation>
+\DeclareOptionBeamer{footertext}{\def\SimplePoster@footertext{#1}}
+\ProcessOptionsBeamer
+\AtBeginDocument{\usetikzlibrary{shadows}}
+\selectcolormodel{RGB}
+\definecolor{jadhpurple}{RGB}{47,43,120}
+\definecolor{jadhyellow}{RGB}{255,255,0}
+\definecolor{jadhpanel}{RGB}{239,248,254}
+\definecolor{jadhred}{RGB}{255,0,0}
+\setbeamercolor{headline}{fg=jadhyellow,bg=jadhpurple}
+\setbeamercolor{footline}{fg=white,bg=jadhpurple}
+\setbeamercolor{title in headline}{fg=jadhyellow}
+\setbeamercolor{author in headline}{fg=white}
+\setbeamercolor{institute in headline}{fg=white}
+\setbeamercolor{conference in headline}{fg=white}
+\setbeamercolor*{normal text}{fg=black,bg=white}
+\setbeamercolor*{block body}{fg=black,bg=jadhpanel}
+\setbeamercolor*{block title}{fg=jadhyellow,bg=jadhpurple}
+\setbeamerfont{block title}{size=\large,series=\bf}
+\setbeamercolor{structure}{fg=jadhred}
+\setbeamertemplate{navigation symbols}{}
+% The headline is drawn as one purple shape rounded at its own bottom-left
+% and bottom-right corners with a drop shadow -- the same rounded+shadow
+% language as the section (block) boxes -- with a plain rectangular window
+% (sharp corners, no shadow of its own) cut out of that shape to fit the
+% two right-hand logos exactly, so the poster's own background shows
+% through the window rather than a panel being painted on top of the purple.
+\newsavebox{\SPbadgebox}
+\newsavebox{\SPwasedabox}
+\newsavebox{\SPimgbox}
+\newbox\SPheadbox
+\newlength{\SPbadgew}
+\newlength{\SPbadgeh}
+\newlength{\SPbadgeraise}
+\newlength{\SPbarr}
+\newlength{\SPshadowdx}
+\newlength{\SPshadowdy}
+\newlength{\SPholeL}
+\newlength{\SPholeR}
+\newlength{\SPholeB}
+\newlength{\SPholeT}
+\newlength{\SPheadtop}
+\newlength{\SPheadbot}
+\newlength{\SPwinpad}
+\newlength{\SPtemplen}
+\newlength{\SPshadoww}
+\newlength{\SPwasL}
+\newlength{\SPwasR}
+\newlength{\SPwasB}
+\newlength{\SPwasT}
+\newlength{\SPwasedaleft}
+\newlength{\SPtripad}
+\setlength{\SPbarr}{1.5ex}
+\setlength{\SPshadowdx}{1ex}
+\setlength{\SPshadowdy}{1ex}
+\setlength{\SPwinpad}{4ex}
+\setlength{\SPshadoww}{0.6ex}
+\setlength{\SPwasedaleft}{5em}
+\setlength{\SPtripad}{4ex}
+\newlength{\SPwinr}
+\setlength{\SPwinr}{3ex}
+% Measures the logo content and sets \SPbadgew/\SPbadgeh/\SPbadgeraise (the
+% window's size and its baseline-relative vertical offset) without drawing
+% anything.
+\newcommand{\SPmeasurebadge}[1]{%
+    \sbox{\SPbadgebox}{#1}%
+    \setlength{\SPbadgew}{\wd\SPbadgebox}%
+    \setlength{\SPbadgeh}{\ht\SPbadgebox}\addtolength{\SPbadgeh}{\dp\SPbadgebox}%
+    \setlength{\SPbadgeraise}{1ex}\addtolength{\SPbadgeraise}{-\SPbadgeh}%
+}
+% The all-four-corners-rounded outline of the whole headline bar, as a tikz
+% path (not closed/filled by itself -- used both for the purple fill, with
+% the windows subtracted via even odd rule, and for the drop shadow).
+\newcommand{\SPheadlineoutline}{%
+    (\SPbarr,-\SPheadbot) -- (\paperwidth-\SPbarr,-\SPheadbot) arc (270:360:\SPbarr)
+        -- (\paperwidth,\SPheadtop-\SPbarr) arc (0:90:\SPbarr)
+        -- (\SPbarr,\SPheadtop) arc (90:180:\SPbarr)
+        -- (0pt,-\SPheadbot+\SPbarr) arc (180:270:\SPbarr) -- cycle%
+}
+% A logo window: normal (convex) rounded corners at the top, but inverted
+% (concave) rounded corners at the bottom -- since the window's bottom sits
+% at or near the bar's own bottom edge, that makes it a slot open at the
+% edge rather than a fully enclosed hole, and a reflex (concave) corner is
+% the natural way to round where the slot's walls meet the bar's outer
+% edge: the fillet flares outward into the purple instead of cutting a
+% little notch into the hole. #1=left #2=right #3=bottom #4=top #5=radius.
+\newcommand{\SPwindowpath}[5]{%
+    (#1+#5,#4) -- (#2-#5,#4) arc (90:0:#5)
+        -- (#2,#3+#5) arc (180:270:#5)
+        -- (#1-#5,#3) arc (270:360:#5)
+        -- (#1,#4-#5) arc (180:90:#5) -- cycle%
+}
+\setbeamertemplate{block begin}{%
+    \vskip.5ex
+    \begin{beamercolorbox}[
+        rounded=true,
+        shadow=true,
+        leftskip=1em,
+        colsep*=.75ex]{block title}%
+        \usebeamerfont*{block title}%
+        \setbox0=\hbox{X}%
+        \raisebox{0pt}[\ht0][.25\ht0]{\insertblocktitle}%
+    \end{beamercolorbox}%
+    \usebeamerfont{block body}%
+    \begin{beamercolorbox}[
+        rounded=true,
+        shadow=true,
+        leftskip=1em,
+        rightskip=1em,
+        colsep*=.75ex,
+        sep=1ex,
+        vmode]{block body}%
+}
+\setbeamertemplate{block end}{%
+    \end{beamercolorbox}
+    \vskip1.5ex
+}
+\setbeamertemplate{headline}{%
+    \leavevmode
+    \SPmeasurebadge{%
+        \includesvg[inkscapelatex=false, height=22ex]{../images/logos/University_of_Osaka_symbol}%
+        \hspace{4em}%
+        \includesvg[inkscapelatex=false, height=22ex]{../images/logos/Institute_of_Science_Tokyo_symbol}%
+    }%
+    \setlength{\SPholeR}{\paperwidth}\addtolength{\SPholeR}{-\SPwasedaleft}\addtolength{\SPholeR}{\SPwinpad}%
+    \setlength{\SPholeL}{\SPholeR}\addtolength{\SPholeL}{-\SPbadgew}\addtolength{\SPholeL}{-2\SPwinpad}%
+    \setlength{\SPholeT}{\SPbadgeraise}\addtolength{\SPholeT}{\SPbadgeh}\addtolength{\SPholeT}{\SPwinpad}%
+    \setbox\SPheadbox=\hbox to \paperwidth{%
+        \hspace*{\SPwasedaleft}%
+        \raisebox{-21ex}[0pt][0pt]{%
+            \includegraphics[height=22ex]{../images/logos/waseda-symbol.pdf}%
+        }%
+        \hfill
+        \begin{minipage}[c]{0.58\paperwidth}
+            \centering
+            \usebeamercolor{title in headline}{%
+                \color{fg}\textbf{\LARGE{\inserttitle}}\\[2.5ex]
+            }
+            \usebeamercolor{author in headline}{%
+                \color{fg}\large{\insertauthor}\\[1.2ex]
+            }
+            \usebeamercolor{institute in headline}{%
+                \color{fg}\large{\insertinstitute}
+            }
+        \end{minipage}%
+        \hfill
+        \raisebox{\SPbadgeraise}[0pt][0pt]{\usebox{\SPbadgebox}}%
+        \hspace*{\SPwasedaleft}%
+    }%
+    \setlength{\SPheadtop}{\ht\SPheadbox}\addtolength{\SPheadtop}{2.5ex}%
+    \setlength{\SPheadbot}{\dp\SPheadbox}\addtolength{\SPheadbot}{2ex}%
+    % The window's bottom follows the logos down, but never past the bar's
+    % own (unchanged) bottom edge -- below that edge the logos simply hang
+    % out over the poster background on their own, the same way the Waseda
+    % logo already does, with no window needed there.
+    \setlength{\SPholeB}{\SPbadgeraise}\addtolength{\SPholeB}{-\SPwinpad}%
+    \setlength{\SPtemplen}{-\SPheadbot}%
+    \ifdim\SPholeB<\SPtemplen \setlength{\SPholeB}{\SPtemplen}\fi%
+    % Rectangular window for the Waseda logo, padded like the other two and
+    % reaching down to the bar's own bottom edge the same way.
+    \sbox{\SPwasedabox}{\includegraphics[height=22ex]{../images/logos/waseda-symbol.pdf}}%
+    \setlength{\SPwasL}{\SPwasedaleft}\addtolength{\SPwasL}{-\SPtripad}%
+    \setlength{\SPwasR}{\SPwasedaleft}\addtolength{\SPwasR}{\wd\SPwasedabox}\addtolength{\SPwasR}{\SPtripad}%
+    \setlength{\SPwasT}{1ex}\addtolength{\SPwasT}{\SPtripad}%
+    \setlength{\SPwasB}{-\SPheadbot}%
+    \raisebox{0pt}[\SPheadtop][\SPheadbot]{%
+    \begin{tikzpicture}[baseline=0pt]
+        % The headline bar itself: rounded at all four of its own corners,
+        % with rounded-corner windows cut out for all three logos, revealing
+        % the poster's own background. The single drop shadow on this whole
+        % (outline minus windows) path wraps around the windows' rounded
+        % edges too.
+        \fill[jadhpurple, even odd rule, drop shadow={shadow xshift=0.6ex, shadow yshift=-0.6ex, opacity=0.45}]
+            \SPheadlineoutline
+            \SPwindowpath{\SPholeL}{\SPholeR}{\SPholeB}{\SPholeT}{\SPwinr}
+            \SPwindowpath{\SPwasL}{\SPwasR}{\SPwasB}{\SPwasT}{\SPwinr};
+        \node[anchor=base west, inner sep=0pt] at (0pt,0pt) {\box\SPheadbox};
+    \end{tikzpicture}%
+    }%
+}
+\setbeamertemplate{footline}{%
+    \begin{beamercolorbox}[wd=\paperwidth,ht=11ex]{footline}
+    \leavevmode%
+    \begin{columns}[T]
+        \begin{column}{0.7\paperwidth}
+            \hspace*{2em}%
+            \usebeamercolor{conference in headline}{%
+                \color{fg}\large{\SimplePoster@footertext}
+            }
+        \end{column}
+        \begin{column}{0.3\paperwidth}
+            \usebeamercolor{conference in headline}{%
+                \color{fg}\large{Last change: August 31, 2026 02:06:30 JST}
+            }
+        \end{column}
+    \end{columns}
+    \vskip3ex
+    \end{beamercolorbox}
+}
+\mode<all>

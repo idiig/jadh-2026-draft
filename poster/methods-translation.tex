@@ -1,0 +1,20 @@
+\begin{block}{Translation-Based Annotation}
+Uses Kaneko's modern Japanese gloss as interpretive evidence. A locally run LLM
+(\texttt{qwen2.5} / Ollama) first aligns the poem's five segments with the modern
+Japanese translation, then finds sentence- or discourse-level breaks in the
+translation, and finally maps them back onto segment positions in the original
+poem. This method emphasizes ``the places read as broken in interpretive
+practice.''
+
+Human review and TEI output: automatically generated candidates are first
+written to a per-poem cache file, then checked, added to, or corrected by a
+human reviewer. The confirmed result is written back to TEI/XML, so the data
+stays traceable to the evidence behind each kugire judgment.
+
+\begin{figure}[H]\centering
+\includesvg[inkscapelatex=false, width=0.9\textwidth]{../images/fig-annotation-pipeline-tikz}
+\setcounter{figure}{5}
+\caption{Annotation pipeline from poem and translation, through LLM
+suggestion and human review, to TEI/XML output.}
+\end{figure}
+\end{block}

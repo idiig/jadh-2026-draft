@@ -2,61 +2,52 @@
 #+cite_export: csl .csl-styles/digital-scholarship-in-the-humanities.csl en-US
 #+options: toc:nil
 #+title: Kugire Data Curation for the Kokinwakashu TEI/XML Data
+#+BEGIN_EXPORT typst
+#set page(
+  paper: "a4",
+  width: 210mm,
+  height: 297mm,
+  columns: 1,
+  numbering: "1"
+)
 
-* 这个工作做了什么？
-尝试用结构化数据描写kugire并给出多种来源，
-讨论
-1. *非可视* 的解释要素在结构化数据中的标注
-2. 以及标注如何留存信息的来源与信度
+#show figure: set align(center)
 
-* 什么是 kugire？
+// Paragraph settings
+#set par(
+  leading: 0.8em,    // line spacing
+  spacing: 1.2em,    // paragraph spacing
+)
+
+// Heading spacing
+#show heading: set block(above: 3em, below: 1.5em)
+
+// List spacing
+#show list: set block(above: 1.2em, below: 1.2em)
+#set list(spacing: 1.2em)
+
+// Enumeration spacing
+#show enum: set block(above: 1.2em, below: 1.2em)
+#set enum(spacing: 1.2em)
+
+// Figure and table spacing
+#show figure: set block(above: 1.2em, below: 1.2em)
+#set figure(placement: auto)
+#show figure.caption: it => align(center, block(width: 61.8%, align(left, context {
+  let label = strong(it.supplement + [ ] + it.counter.display(it.numbering) + it.separator)
+  par(hanging-indent: measure(label).width, label + it.body)
+})))
+
+#align(center)[
+  #set text(size: 18pt)
+  Kugire Data Curation for the Kokinwakashu TEI/XML Data
+]
+
+#+END_EXPORT
+
+* Introduction
 
 Kugire — phrase breaks within waka poems — are a basic structural element of waka, yet no standardized, publicly available kugire dataset exists. For TEI/XML encoding of waka, each project must annotate from scratch.
-
-shokugire
-
-nikugire
-
-sankugire
-
-yonkugire
-
-* 为什么 kugire？
-
-对于古今和歌的研究，信息交换和传承的空间，注释和传授的说明很多样。
-说明也具有针对性。
-基于注释和辞典的研究，以及跨领域的知识，20世纪的注释书中为了说明和歌的内容添加了现代语言的翻译。
-
-20世纪的研究者的翻译很多基于注释和享受史的研究，我们也可以看作专业信息传播和阅读史的一个组成部分。
-
-从语言学和知识交流的角度出发，我们目前为止关注了现代日语翻译中体现出来的和歌的解释的多个侧面。
-
-1. 词汇关联空间的差异：一个词再现代日语里必须被补充什么信息
-   辞典中选择新脱落，但实践中不可缺的内容。共同和多样性。
-   
-2. 谓词（bare verb）变换规则：语言理论趋于一致，翻译实践趋于多样。
-
-目前我们的研究从翻译中我们可以得到“理论上应该”的解读和“实践上至少”的差异，
-以及实践解读的微观层面的变异。
-并开发了很多方法。
-
-但是这些研究目前没有讨论语篇层次上的解读多样性？kugire是一个很好的切口
-
-关于中古日语中的句子的连续性的讨论，
-
-komatsu hideo 的 【连绵】
-
-enjambment 和 修辞
-
-process grammar model (PGM)
-
-和歌中的断句感知差异
-
-目前缺乏一个数据库
-
-* kugire的多样性
-
-* 
 
 [[https://github.com/atuko315/program-to-divide-31-syllable-Japanese-poem.][atuko315/program-to-divide-31-syllable-Japanese-poem]] is one of the few existing kugire resources: a program to identify kugire with a dataset for the Hyakuninisshu, later applied to the Kokinwakashu and compared against [cite/t/c:@Asaoka2008Waka] and [cite/t/c:@Kami1985Shin]. The dataset, however, cannot capture the interpretive nature of kugire [cite/cf:see @Kami1985Shin], which admits no single correct answer. [cite/t/c:@Asaoka2007Waka] proposes two criteria — semantic independence of core sentences (necessary) and a clear grammatical break (sufficient) — both of which remain open to interpretation. A kugire dataset should therefore collect annotations from multiple sources, each with documented criteria.
 
@@ -129,7 +120,7 @@ Strong candidates are phrases ending in the conclusive form. For example, in the
 #+caption: Three types of kugire annotation derived from morphological analysis: (1) strong, (2) moderate, and (3) weak candidates. Glossing follows [cite/t/c:@Zisk2023Glossing].
 #+name: fig:example
 #+attr_latex: scale=100%
-[[./example.svg]]
+[[../images/example.svg]]
 
 Moderate candidates are phrases where the copula or information structure suggests a break, though not conclusively. In the second poem of the Kokinwakashu, the segments before and after =wo= are syntactically connected, yet the former presents a scene while the latter offers a conjectural statement about it — a shift that may indicate a break ([[fig:example]]-(2)).
 
